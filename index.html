@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prayag Kishore | Student Developer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f14;
+            color: #e8edf2;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 20, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #202832;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #64ffda;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #aeb8c2;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+
+        /* ================= GENERAL ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 100px 0;
+            scroll-margin-top: 70px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .section-title::before {
+            content: "< ";
+            color: #64ffda;
+        }
+
+        .section-title::after {
+            content: " />";
+            color: #64ffda;
+        }
+
+        .section-description {
+            color: #9ba6b2;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .small-text {
+            color: #64ffda;
+            font-family: monospace;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #9ba6b2;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            color: #9ba6b2;
+            max-width: 700px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 8px;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #64ffda;
+            color: #0b0f14;
+            transform: translateY(-2px);
+        }
+
+        .btn-filled {
+            background: #64ffda;
+            color: #0b0f14;
+            font-weight: bold;
+        }
+
+        .btn-filled:hover {
+            background: transparent;
+            color: #64ffda;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-card {
+            background: #111820;
+            border: 1px solid #202a34;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .about-card p {
+            color: #b8c1ca;
+            margin-bottom: 20px;
+        }
+
+        .goal {
+            border-left: 3px solid #64ffda;
+            padding-left: 20px;
+            color: #d6dde4;
+        }
+
+        /* ================= PROJECTS ================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #111820;
+            border: 1px solid #202a34;
+            border-radius: 14px;
+            padding: 25px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #64ffda;
+        }
+
+        .project-number {
+            color: #64ffda;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: #9ba6b2;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            color: #64ffda;
+            font-family: monospace;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            max-width: 900px;
+        }
+
+        .skill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #111820;
+            border: 1px solid #26323e;
+            padding: 12px 18px;
+            border-radius: 30px;
+            color: #d5dde5;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            border-color: #64ffda;
+            color: #64ffda;
+            background: #151f28;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.08);
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-card {
+            background: #111820;
+            border: 1px solid #202a34;
+            border-radius: 14px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: #ffffff;
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: #9ba6b2;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid #202832;
+            text-align: center;
+            padding: 25px;
+            color: #77818c;
+            font-size: 0.9rem;
+        }
+
+        /* ================= ANIMATION ================= */
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 750px) {
+
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .skills-grid {
+                gap: 10px;
+            }
+
+            .skill {
+                padding: 10px 14px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .nav-links {
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+
+            .container {
+                padding: 0 18px;
+            }
+
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .skills-grid {
+                gap: 8px;
+            }
+
+            .skill {
+                white-space: normal;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+        <div class="nav-container">
+
+            <a href="#home" class="logo">
+                Prayag<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="hero" id="home">
+
+        <div class="container">
+
+            <div class="hero-content fade-in">
+
+                <div class="small-text">
+                    Hello, I'm
+                </div>
+
+                <h1>
+                    Prayag Kishore
+                </h1>
+
+                <h2>
+                    B.Tech Computer Science & Engineering Student
+                </h2>
+
+                <p>
+                    A 3rd semester Computer Science and Engineering student
+                    interested in programming, problem solving, and software
+                    development.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#projects" class="btn btn-filled">
+                        View My Projects
+                    </a>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">
+                        GitHub Profile
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                About
+            </h2>
+
+            <p class="section-description">
+                A little about my learning journey and current focus.
+            </p>
+
+            <div class="about-card">
+
+                <p>
+                    I am a Computer Science and Engineering student interested
+                    in programming, problem solving, and software development.
+                    I am developing my skills through practical college
+                    activities, GitHub projects, collaborative coding, and
+                    programming practice.
+                </p>
+
+                <p>
+                    Through these activities, I am building a stronger
+                    understanding of programming fundamentals and practical
+                    software development.
+                </p>
+
+                <div class="goal">
+
+                    <strong>Current Learning Goal:</strong><br>
+
+                    Strengthen my programming fundamentals, data structures,
+                    algorithms, and software development skills while building
+                    practical projects for future internship and software
+                    development opportunities.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Projects
+            </h2>
+
+            <p class="section-description">
+                A selection of my programming practice, collaborative work,
+                and development projects.
+            </p>
+
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        01 / GitHub
+                    </div>
+
+                    <h3>
+                        Portfolio Building & GitHub
+                    </h3>
+
+                    <p>
+                        This repository contains my portfolio-building activity
+                        and GitHub development work, including practice with
+                        repositories, commits, files, and basic GitHub workflows.
+                    </p>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/Portfolio_Building"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link">
+                        View Repository →
+                    </a>
+
+                </article>
+
+
+                <!-- Project 2 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        02 / Collaboration
+                    </div>
+
+                    <h3>
+                        GitLens & Live Share Collaboration
+                    </h3>
+
+                    <p>
+                        Collaborative C programming activity using Visual
+                        Studio Code Live Share and GitLens, focusing on
+                        real-time collaboration and understanding code history.
+                    </p>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/Prithvi-Prayag"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link">
+                        View Repository →
+                    </a>
+
+                </article>
+
+
+                <!-- Project 3 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        03 / C Programming
+                    </div>
+
+                    <h3>
+                        Line Editor in C
+                    </h3>
+
+                    <p>
+                        A command-line Line Editor supporting displaying,
+                        inserting, deleting, editing, searching, saving, and
+                        loading lines. The project uses arrays of strings,
+                        dynamic memory allocation, string manipulation, file
+                        handling, input validation, and modular functions.
+                    </p>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/Line-Editor-Prayag"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link">
+                        View Repository →
+                    </a>
+
+                </article>
+
+
+                <!-- Project 4 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        04 / Problem Solving
+                    </div>
+
+                    <h3>
+                        LeetCode Solutions
+                    </h3>
+
+                    <p>
+                        A programming and problem-solving practice repository
+                        containing solutions involving arrays and strings,
+                        basic algorithms, stacks, and linked lists.
+                    </p>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/leetcode-solutions"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link">
+                        View Repository →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Skills
+            </h2>
+
+            <p class="section-description">
+                Technologies, programming concepts, and tools I am currently
+                learning and practicing.
+            </p>
+
+            <div class="skills-grid">
+
+                <span class="skill">C</span>
+                <span class="skill">Java</span>
+                <span class="skill">Python</span>
+                <span class="skill">Data Structures & Algorithms</span>
+                <span class="skill">Arrays & Strings</span>
+                <span class="skill">Linked Lists</span>
+                <span class="skill">Stacks</span>
+                <span class="skill">Dynamic Memory Allocation</span>
+                <span class="skill">File Handling</span>
+                <span class="skill">Git</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">GitLens</span>
+                <span class="skill">Visual Studio Code</span>
+                <span class="skill">Live Share</span>
+                <span class="skill">Problem Solving</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Contact
+            </h2>
+
+            <div class="contact-card">
+
+                <h3>
+                    Let's Connect
+                </h3>
+
+                <p>
+                    Explore my GitHub profile and programming repositories
+                    to see my development work and problem-solving practice.
+                </p>
+
+                <div
+                    class="buttons"
+                    style="justify-content: center;"
+                >
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-filled">
+                        GitHub Profile
+                    </a>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/Portfolio_Building"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">
+                        Portfolio Repository
+                    </a>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/Prithvi-Prayag"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">
+                        Collaboration Repository
+                    </a>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/Line-Editor-Prayag"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">
+                        Line Editor
+                    </a>
+
+                    <a
+                        href="https://github.com/prayagkishore05-droid/leetcode-solutions"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">
+                        LeetCode Solutions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Prayag Kishore · B.Tech Computer Science & Engineering
+        </p>
+
+    </footer>
+
+</body>
+</html>
